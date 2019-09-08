@@ -4,9 +4,11 @@
 
 a validator without any dependency except jre
 
-## 功能
+在业务功能实现中, 大多都会对输入参数做一些参数校验, 使用方式各不相同.
+为了让大家从参数校验这种简单又琐碎的事情中抽身出来, 可以更多的关注业务实现, 因此开发了一个简单的参数校验器.
+此校验器不依赖二方库和三方库, 使用简单, 口感纯厚, 无色无味, 居家旅行, 必备良药.
 
-对象校验(运行时校验)
+## 功能
 
 注解校验(编译时生成校验代码)
 
@@ -31,11 +33,10 @@ a validator without any dependency except jre
 
 ## 服用
 
-三种使用方式
+使用方式
 
-1)对象校验:被校验的参数对象需要实现Validation接口,在需要做参数校验的成员类上加上校验注解,支持自定义方法校验.对方法声明有要求,必须是 public ConstraintViolation 方法名(参数类型 参数名称)
 
-2)通用校验:com.exmyth.commons.validator.util.Validators 提供了一些通用校验方法
+1)通用校验:com.exmyth.commons.validator.util.Validators 提供了一些通用校验方法
 
 ```java
 /**
@@ -109,16 +110,9 @@ public static void validateOrThrow(Object value, String[] fieldNames, String mes
  */
 public static List<ConstraintViolation> validate(Object instance, boolean failFast);
 ```
-3)注解校验:支持@Inspect 设置校验规则,或者@Constraint 配合 @NotBlank @Valid 等校验规则注解使用
+2)注解校验:支持@Constraint 配合 @NotBlank @Valid 等校验规则注解使用
 
-```java
-@RequestMapping("/hello")
-@Inspect(field = "userName", validator = NotBlank.class)
-@Inspect(field = "realName", validator = Length.class, args = {"min", "2", "max", "4"})
-@Inspect(field = {"address", "email"}, validator = NotAllBlank.class)
-@Inspect(field = "email", validator = Email.class, message = "电子邮件地址格式错误")
-public Object hello(String userName, String realName, String address, String email)
- 
+```java 
 @Constraint
 private Object validate(@Enum(value = {"A", "B", "C"}, message = "姓名必须是可以枚举值 A, B, C") String name,
                        @Min(8) Integer num,
@@ -148,13 +142,10 @@ public @interface Length {
 ```
 
 ## 栗子
+
 Talk is cheap. Show me the code
 
-> 对象校验(运行时):[com.exmyth.commons.validator.test.HelloApiRequest](https://github.com/exmyth/commons-validator/blob/master/src/test/java/com/exmyth/commons/validator/test/HelloApiRequest.java)
-
-> 通用校验(运行时):[com.exmyth.commons.validator.test.HelloTest](https://github.com/exmyth/commons-validator/blob/master/src/test/java/com/exmyth/commons/validator/test/HelloTest.java)
-
-> 注解校验(编译时生成校验代码)
+> 注解校验, 编译时生成校验代码
 >
 > [com.exmyth.commons.validator.test.RequestApi](https://github.com/exmyth/commons-validator/blob/master/src/test/java/com/exmyth/commons/validator/test/RequestApi.java)
 >
@@ -172,7 +163,7 @@ public class ValidatorApi extends RequestApi {
     public ValidatorApi() {
     }
 
-    public Object hello(String userName, String realName, String address, String email, Integer category) {
+    public Object v1(String userName, String realName, String address, String email, Integer category) {
         Validators.validateOrThrow(userName, new String[]{"userName"}, "", NotBlank.class, new String[0]);
         Validators.validateOrThrow(realName, new String[]{"realName"}, "", Length.class, new String[]{"min", "2", "max", "4"});
         Validators.validateOrThrow(new Object[]{address, email}, new String[]{"address", "email"}, "", NotAllBlank.class, new String[0]);
@@ -187,7 +178,7 @@ public class ValidatorApi extends RequestApi {
         return result;
     }
 
-    public Object welcome(ValidatorApi.HelloRequest obj, JSONObject obj1, Map<String, Object> obj2) {
+    public Object v2(ValidatorApi.HelloRequest obj, JSONObject obj1, Map<String, Object> obj2) {
         Validators.validateOrThrow(obj.getId(), new String[]{"id"}, "", Positive.class, new String[0]);
         Validators.validateOrThrow(obj.getName(), new String[]{"name"}, "", Enum.class, new String[]{"value", "A", "B", "C", "D"});
         Validators.validateOrThrow(obj1, new String[]{"obj1"}, "", NotNull.class, new String[0]);
@@ -199,7 +190,7 @@ public class ValidatorApi extends RequestApi {
         return obj;
     }
 
-    public Object validate(@Enum(value = {"A", "B", "C"},message = "姓名必须是可以枚举值 A, B, C") String name, @Min(8L) Integer num, @Length(min = 2,max = 10) String email) {
+    public Object v3(@Enum(value = {"A", "B", "C"},message = "姓名必须是可以枚举值 A, B, C") String name, @Min(8L) Integer num, @Length(min = 2,max = 10) String email) {
         Validators.validateOrThrow(name, new String[]{"name"}, "姓名必须是可以枚举值 A, B, C", Enum.class, new String[]{"value", "A", "B", "C"});
         Validators.validateOrThrow(num, new String[]{"num"}, "", Min.class, new String[]{"value", "8"});
         Validators.validateOrThrow(email, new String[]{"email"}, "", Length.class, new String[]{"min", "2", "max", "10"});
@@ -207,7 +198,7 @@ public class ValidatorApi extends RequestApi {
         return name;
     }
 
-    public void request(cn.tongdun.hello.web.RequestApi.HelloRequest helloRequest) {
+    public void v4(cn.tongdun.hello.web.RequestApi.HelloRequest helloRequest) {
         super.request(helloRequest);
         Validators.validateOrThrow(helloRequest.getMobile(), "mobile", Mobile.class, new String[0]);
     }
