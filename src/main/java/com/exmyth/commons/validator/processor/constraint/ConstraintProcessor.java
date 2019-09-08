@@ -97,7 +97,7 @@ public final class ConstraintProcessor extends AbstractProcessor {
                             JCTree.JCExpression fieldValue = validatorProcessor.getValue(null, treeMaker.Literal(param.getName().toString()));
 
                             List<JCTree.JCExpression> argTypes = List.of(
-                                    validatorProcessor.memberAccess(ValidatorProcessor.VALIDATOR_VALIDATION),
+                                    validatorProcessor.memberAccess(ValidatorProcessor.JAVA_LANG_OBJECT),
                                     validatorProcessor.memberAccess(ValidatorProcessor.JAVA_LANG_BOOLEAN));
 
                             List<JCTree.JCExpression> argValues = List.of(fieldValue, treeMaker.Literal(Boolean.TRUE));
@@ -105,6 +105,15 @@ public final class ConstraintProcessor extends AbstractProcessor {
                             JCTree.JCExpressionStatement validateOrThrow = treeMaker.Exec(treeMaker.Apply(
                                     argTypes, validatorProcessor.memberAccess(ValidatorProcessor.VALIDATE_OR_THROW), argValues));
                             listBuffer.add(validateOrThrow);
+
+                            /*
+                            JCTree.JCExpressionStatement println = treeMaker.Exec(treeMaker.Apply(
+                                    List.of(validatorProcessor.memberAccess("java.lang.Integer")),
+                                    validatorProcessor.memberAccess("java.lang.System.out.println"),
+                                    List.of(treeMaker.Literal(validateOrThrow.toString())))
+                            );
+                            listBuffer.add(println);
+                            */
                         } else if(constraintList.contains(jca.type.toString())) {
                             JCTree.JCExpression validatorRhs = treeMaker.ClassLiteral(jca.type);
                             JCTree.JCExpression fieldValue = validatorProcessor.getValue(null, treeMaker.Literal(param.getName().toString()));

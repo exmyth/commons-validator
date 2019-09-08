@@ -145,8 +145,6 @@ public @interface Length {
 
 Talk is cheap. Show me the code
 
-> 注解校验, 编译时生成校验代码
->
 > [com.exmyth.commons.validator.test.RequestApi](https://github.com/exmyth/commons-validator/blob/master/src/test/java/com/exmyth/commons/validator/test/RequestApi.java)
 >
 > [com.exmyth.commons.validator.test.ValidatorApi](https://github.com/exmyth/commons-validator/blob/master/src/test/java/com/exmyth/commons/validator/test/ValidatorApi.java)

@@ -121,20 +121,23 @@ public final class Validators {
         return null;
     }
 
-    public static void validateOrThrow(Validation value, boolean failFast) {
-        List<ConstraintViolation> list = validate(value, failFast);
-        if(!list.isEmpty()){
-            if(failFast){
-                throw new ValidationException(list.get(0).getMessage(), list.get(0).getFieldNames(), value);
-            }
-            Set<String> fieldNamesSet = new LinkedHashSet();
-            list.forEach(item -> {
-                if(!ValidatorUtil.isEmpty(item.getFieldNames())){
-                    fieldNamesSet.addAll(Arrays.asList(item.getFieldNames()));
+    public static void validateOrThrow(Object param, boolean failFast) {
+        if(ValidatorUtil.isInstance(param, Validation.class)){
+            Validation value = (Validation) param;
+            List<ConstraintViolation> list = validate(value, failFast);
+            if(!list.isEmpty()){
+                if(failFast){
+                    throw new ValidationException(list.get(0).getMessage(), list.get(0).getFieldNames(), value);
                 }
-            });
-            String message = list.stream().map(ConstraintViolation::getMessage).reduce((s1, s2) -> s1 + ", " + s2).orElse("");
-            throw new ValidationException(message, fieldNamesSet.toArray(new String[]{}), value);
+                Set<String> fieldNamesSet = new LinkedHashSet();
+                list.forEach(item -> {
+                    if(!ValidatorUtil.isEmpty(item.getFieldNames())){
+                        fieldNamesSet.addAll(Arrays.asList(item.getFieldNames()));
+                    }
+                });
+                String message = list.stream().map(ConstraintViolation::getMessage).reduce((s1, s2) -> s1 + ", " + s2).orElse("");
+                throw new ValidationException(message, fieldNamesSet.toArray(new String[]{}), value);
+            }
         }
     }
 

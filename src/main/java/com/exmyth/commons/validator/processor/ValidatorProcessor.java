@@ -24,7 +24,6 @@ public final class ValidatorProcessor {
     public static final String GET = "get";
 
     public static final String JAVA_LANG_OBJECT = "java.lang.Object";
-    public static final String VALIDATOR_VALIDATION = "com.exmyth.commons.validator.Validation";
     public static final String JAVA_LANG_STRING = "java.lang.String";
     public static final String JAVA_LANG_CLASS = "java.lang.Class";
     public static final String JAVA_LANG_BOOLEAN = "java.lang.Boolean";
