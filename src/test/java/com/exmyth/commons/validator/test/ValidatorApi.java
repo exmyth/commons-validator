@@ -30,7 +30,7 @@ public class ValidatorApi extends RequestApi{
     public void v1(String userName, String realName, String address, String email, Integer category){
     }
 
-    @Inspect(field = "obj.userName", validator = Positive.class)//默认使用getXxx()获取被校验值
+    @Inspect(field = "obj.mobile", validator = Mobile.class)//默认使用getXxx()获取被校验值
     @Inspect(field = "obj.age", validator = Range.class, args = {"min", "18", "max", "150"})
     @Inspect(field = "obj1", validator = NotNull.class)
     @Inspect(field = "obj2", validator = NotNull.class)
@@ -42,8 +42,8 @@ public class ValidatorApi extends RequestApi{
 
     @Constraint
     public void v3(@Enum(value = {"A", "B", "C"}, message = "姓名必须是可以枚举值 A, B, C") String realName,
-                          @Min(8) Integer age,
-                          @Length(min = 2, max = 64) String email){
+                   @Min(8) Integer age,
+                   @Length(min = 2, max = 64) String email){
     }
 
     @Constraint
@@ -55,6 +55,14 @@ public class ValidatorApi extends RequestApi{
         private String username;
         @Length(min = 2, max = 64)
         private String realName;
+
+        public String getUsername() {
+            return username;
+        }
+
+        public String getRealName() {
+            return realName;
+        }
     }
 
     /**

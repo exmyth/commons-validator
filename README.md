@@ -168,59 +168,57 @@ public class ValidatorApi extends RequestApi {
     public ValidatorApi() {
     }
 
-    public Object v1(String userName, String realName, String address, String email, Integer category) {
+    public void v1(String userName, String realName, String address, String email, Integer category) {
         Validators.validateOrThrow(userName, new String[]{"userName"}, "", NotBlank.class, new String[0]);
-        Validators.validateOrThrow(realName, new String[]{"realName"}, "", Length.class, new String[]{"min", "2", "max", "4"});
+        Validators.validateOrThrow(realName, new String[]{"realName"}, "", Length.class, new String[]{"min", "2", "max", "64"});
         Validators.validateOrThrow(new Object[]{address, email}, new String[]{"address", "email"}, "", NotAllBlank.class, new String[0]);
         Validators.validateOrThrow(email, new String[]{"email"}, "电子邮件地址格式错误", Email.class, new String[0]);
         Validators.validateOrThrow(category, new String[]{"category"}, "", Enum.class, new String[]{"value", "1", "0", "2", "4"});
-        Map<String, Object> result = new HashMap();
-        result.put("userName", userName);
-        result.put("realName", realName);
-        result.put("address", address);
-        result.put("email", email);
-        System.out.println(result);
-        return result;
     }
 
-    public Object v2(ValidatorApi.HelloRequest obj, JSONObject obj1, Map<String, Object> obj2) {
-        Validators.validateOrThrow(obj.getId(), new String[]{"id"}, "", Positive.class, new String[0]);
-        Validators.validateOrThrow(obj.getName(), new String[]{"name"}, "", Enum.class, new String[]{"value", "A", "B", "C", "D"});
+    public void v2(HelloRequest obj, JSONObject obj1, Map<String, Object> obj2) {
+        Validators.validateOrThrow(obj.getMobile(), new String[]{"mobile"}, "", Mobile.class, new String[0]);
+        Validators.validateOrThrow(obj.getAge(), new String[]{"age"}, "", Range.class, new String[]{"min", "18", "max", "150"});
         Validators.validateOrThrow(obj1, new String[]{"obj1"}, "", NotNull.class, new String[0]);
         Validators.validateOrThrow(obj2, new String[]{"obj2"}, "", NotNull.class, new String[0]);
         Validators.validateOrThrow(new Object[]{obj1.get("hello"), obj2.get("world")}, new String[]{"hello", "world"}, "", NotAllBlank.class, new String[0]);
         Validators.validateOrThrow(obj1.get("hello"), new String[]{"hello"}, "", Length.class, new String[]{"min", "2", "max", "4"});
         Validators.validateOrThrow(obj2.get("world"), new String[]{"world"}, "", NotBlank.class, new String[0]);
-        System.out.println(obj);
-        return obj;
     }
 
-    public Object v3(@Enum(value = {"A", "B", "C"},message = "姓名必须是可以枚举值 A, B, C") String name, @Min(8L) Integer num, @Length(min = 2,max = 10) String email) {
-        Validators.validateOrThrow(name, new String[]{"name"}, "姓名必须是可以枚举值 A, B, C", Enum.class, new String[]{"value", "A", "B", "C"});
-        Validators.validateOrThrow(num, new String[]{"num"}, "", Min.class, new String[]{"value", "8"});
-        Validators.validateOrThrow(email, new String[]{"email"}, "", Length.class, new String[]{"min", "2", "max", "10"});
-        System.out.println(name);
-        return name;
+    public void v3(@Enum(value = {"A", "B", "C"},message = "姓名必须是可以枚举值 A, B, C") String realName, @Min(8L) Integer age, @Length(min = 2,max = 64) String email) {
+        Validators.validateOrThrow(realName, new String[]{"realName"}, "姓名必须是可以枚举值 A, B, C", Enum.class, new String[]{"value", "A", "B", "C"});
+        Validators.validateOrThrow(age, new String[]{"age"}, "", Min.class, new String[]{"value", "8"});
+        Validators.validateOrThrow(email, new String[]{"email"}, "", Length.class, new String[]{"min", "2", "max", "64"});
     }
 
-    public void v4(cn.tongdun.hello.web.RequestApi.HelloRequest helloRequest) {
+    public void v4(ValidatorApi.HelloBody body) {
+        Validators.validateOrThrow(body, true);
+    }
+
+    public void request(HelloRequest helloRequest) {
         super.request(helloRequest);
         Validators.validateOrThrow(helloRequest.getMobile(), "mobile", Mobile.class, new String[0]);
     }
 
-    class HelloRequest {
-        private Integer id;
-        private String name;
+    static class HelloBody implements Validation {
+        @NotBlank
+        private String username;
+        @Length(
+            min = 2,
+            max = 64
+        )
+        private String realName;
 
-        HelloRequest() {
+        HelloBody() {
         }
 
-        public Integer getId() {
-            return this.id;
+        public String getUsername() {
+            return this.username;
         }
 
-        public String getName() {
-            return this.name;
+        public String getRealName() {
+            return this.realName;
         }
     }
 }
@@ -280,3 +278,6 @@ org.hibernate.validator.constraints.URL.message                     = 需要是�
 org.hibernate.validator.constraints.time.DurationMax.message        = 必须小于${inclusive == true ? '或等于' : ''}${days == 0 ? '' : days += '天'}${hours == 0 ? '' : hours += '小时'}${minutes == 0 ? '' : minutes += '分钟'}${seconds == 0 ? '' : seconds += '秒'}${millis == 0 ? '' : millis += '毫秒'}${nanos == 0 ? '' : nanos += '纳秒'}
 org.hibernate.validator.constraints.time.DurationMin.message        = 必须大于${inclusive == true ? '或等于' : ''}${days == 0 ? '' : days += '天'}${hours == 0 ? '' : hours += '小时'}${minutes == 0 ? '' : minutes += '分钟'}${seconds == 0 ? '' : seconds += '秒'}${millis == 0 ? '' : millis += '毫秒'}${nanos == 0 ? '' : nanos += '纳秒'}
 ```
+
+## 注意事项
+_

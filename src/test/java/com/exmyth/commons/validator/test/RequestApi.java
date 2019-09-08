@@ -19,29 +19,22 @@ public class RequestApi {
         private String email;
         private String mobile;
         private String idNumber;
+        private int age;
 
         public String getEmail() {
             return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
         }
 
         public String getMobile() {
             return mobile;
         }
 
-        public void setMobile(String mobile) {
-            this.mobile = mobile;
-        }
-
         public String getIdNumber() {
             return idNumber;
         }
 
-        public void setIdNumber(String idNumber) {
-            this.idNumber = idNumber;
+        public int getAge() {
+            return age;
         }
     }
 }
