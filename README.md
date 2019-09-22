@@ -26,9 +26,12 @@ a validator without any dependency except jre
 
 ```xml
 <dependency>
-  <groupId>com.exmyth</groupId>
+  <groupId>com.github.exmyth</groupId>
   <artifactId>commons-validator</artifactId>
+  <version>0.0.1</version>
 </dependency>
+
+implementation 'com.github.exmyth:commons-validator:0.0.1'
 ```
 
 ## 服用
