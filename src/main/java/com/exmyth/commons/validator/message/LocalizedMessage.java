@@ -5,7 +5,7 @@ import java.util.Locale;
 /**
  * @author exmyth
  * @date 2019-07-17 15:35
- * @description
+ *
  */
 public final class LocalizedMessage {
     private final String message;

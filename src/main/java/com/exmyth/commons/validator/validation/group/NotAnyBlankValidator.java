@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * @author exmyth
  * @date 2019-07-22 07:46
- * @description
+ *
  */
 @NotAnyBlank
 public final class NotAnyBlankValidator implements GroupValidator<NotAnyBlank> {

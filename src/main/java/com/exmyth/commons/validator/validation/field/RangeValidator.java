@@ -13,7 +13,7 @@ import static com.exmyth.commons.validator.util.ValidatorUtil.*;
 /**
  * @author exmyth
  * @date 2019-08-23 21:21
- * @description
+ *
  */
 public final class RangeValidator implements FieldValidator<Range> {
     @Range(min = 0, max = Long.MAX_VALUE)

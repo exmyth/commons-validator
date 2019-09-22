@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author exmyth
  * @date 2019-07-17 09:58
- * @description
+ *
  */
 public final class DefaultResourceBundleLocator implements ResourceBundleLocator {
     private static final String PROPERTIES_FILE_NAME = "ValidationMessages";

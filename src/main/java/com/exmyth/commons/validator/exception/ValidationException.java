@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author exmyth
  * @date 2019-07-17 15:02
- * @description
+ *
  */
 public final class ValidationException extends RuntimeException {
     private final String[] fieldNames;

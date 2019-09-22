@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * @author exmyth
  * @date 2019-07-18 06:18
- * @description
+ *
  */
 public final class IdNumberValidator implements FieldValidator<IdNumber> {
     private static final Pattern pattern = Pattern.compile("(^\\d{15}$)|(^\\d{17}([0-9]|X|x)$)");

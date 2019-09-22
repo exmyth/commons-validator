@@ -11,7 +11,7 @@ import com.exmyth.commons.validator.validation.FieldValidator;
 /**
  * @author exmyth
  * @date 2019-07-18 06:56
- * @description
+ *
  */
 public final class NotNullValidator implements FieldValidator<NotNull> {
     @NotNull

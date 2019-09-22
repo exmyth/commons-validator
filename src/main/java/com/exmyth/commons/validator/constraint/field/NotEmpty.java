@@ -17,7 +17,7 @@ import java.util.Map;
  *
  * @author exmyth
  * @date 2019-07-16 21:48
- * @description
+ *
  */
 @Documented
 @Target({ElementType.FIELD, ElementType.PARAMETER})

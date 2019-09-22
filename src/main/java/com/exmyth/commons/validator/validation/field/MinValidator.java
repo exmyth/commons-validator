@@ -11,7 +11,7 @@ import com.exmyth.commons.validator.validation.FieldValidator;
 /**
  * @author exmyth
  * @date 2019-07-18 06:53
- * @description
+ *
  */
 public final class MinValidator implements FieldValidator<Min> {
     @Min(value = 0)

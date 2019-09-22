@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * 实现此接口的类，其字段需要进行校验
  * @author exmyth
  * @date 2019-07-15 06:32
- * @description
+ *
  */
 public interface FieldValidator<A extends Annotation> extends Validator<A>{
     /**

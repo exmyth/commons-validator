@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * @author exmyth
  * @date 2019-07-18 09:46
- * @description
+ *
  */
 public final class EmailValidator implements FieldValidator<Email> {
     private static final Pattern pattern = Pattern.compile("^[a-zA-Z0-9._-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$");

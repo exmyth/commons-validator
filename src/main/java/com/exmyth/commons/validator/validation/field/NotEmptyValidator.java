@@ -16,7 +16,7 @@ import static com.exmyth.commons.validator.util.ValidatorUtil.*;
 /**
  * @author exmyth
  * @date 2019-07-18 06:55
- * @description
+ *
  */
 public final class NotEmptyValidator implements FieldValidator<NotEmpty> {
     @NotEmpty

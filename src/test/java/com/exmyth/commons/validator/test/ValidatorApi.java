@@ -19,7 +19,7 @@ import static com.exmyth.commons.validator.processor.inspect.Bean.MAPPER;
  * 注解校验使用举例
  * @author exmyth
  * @date 2019-08-21 11:10
- * @description
+ *
  */
 public class ValidatorApi extends RequestApi{
     @Inspect(field = "userName", validator = NotBlank.class)
@@ -40,6 +40,7 @@ public class ValidatorApi extends RequestApi{
     public void v2(HelloRequest obj, JSONObject obj1, Map<String, Object> obj2){
     }
 
+    //@Enum, @Valid等作为方法参数注解使用,必须在方法上加上@Constraint
     @Constraint
     public void v3(@Enum(value = {"A", "B", "C"}, message = "姓名必须是可以枚举值 A, B, C") String realName,
                    @Min(8) Integer age,

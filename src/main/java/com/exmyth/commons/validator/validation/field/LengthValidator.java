@@ -12,7 +12,7 @@ import com.exmyth.commons.validator.validation.FieldValidator;
 /**
  * @author exmyth
  * @date 2019-07-16 19:39
- * @description
+ *
  */
 public final class LengthValidator implements FieldValidator<Length> {
     @Length

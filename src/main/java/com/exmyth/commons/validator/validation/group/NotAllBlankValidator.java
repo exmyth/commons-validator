@@ -16,7 +16,7 @@ import static com.exmyth.commons.validator.message.DefaultMessageInterpolator.LE
 /**
  * @author exmyth
  * @date 2019-07-22 07:15
- * @description
+ *
  */
 @NotAllBlank
 public final class NotAllBlankValidator implements GroupValidator<NotAllBlank> {

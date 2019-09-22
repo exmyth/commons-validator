@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * @author exmyth
  * @date 2019-07-18 06:53
- * @description
+ *
  */
 public final class MobileValidator implements FieldValidator<Mobile> {
     private static final Pattern pattern = Pattern.compile("^(\\+?86-?)?1\\d{10}$");

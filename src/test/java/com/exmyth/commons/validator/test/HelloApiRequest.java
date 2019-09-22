@@ -15,7 +15,7 @@ import com.exmyth.commons.validator.processor.inspect.Inspect;
  * 编号1-8表示校验顺序, Customize优先于其他其他校验器
  * @author exmyth
  * @date 2019-07-17 16:24
- * @description
+ *
  */
 //2 复合校验支持设置多个
 @NotAnyBlank

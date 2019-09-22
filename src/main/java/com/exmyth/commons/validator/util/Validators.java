@@ -29,7 +29,7 @@ import static com.exmyth.commons.validator.util.ValidatorUtil.isInstance;
 /**
  * @author exmyth
  * @date 2019-07-16 09:09
- * @description
+ *
  */
 public final class Validators {
     private static final Map<Class, FieldValidator> validatorMap = new LinkedHashMap<>(18);

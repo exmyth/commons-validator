@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 /**
  * @author exmyth
  * @date 2019-07-17 09:52
- * @description
+ *
  */
 public interface ResourceBundleLocator {
     /**

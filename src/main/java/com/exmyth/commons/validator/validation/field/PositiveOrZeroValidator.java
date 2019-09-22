@@ -13,7 +13,7 @@ import static com.exmyth.commons.validator.util.ValidatorUtil.*;
 /**
  * @author exmyth
  * @date 2019-07-18 06:57
- * @description
+ *
  */
 public final class PositiveOrZeroValidator implements FieldValidator<PositiveOrZero> {
     @PositiveOrZero

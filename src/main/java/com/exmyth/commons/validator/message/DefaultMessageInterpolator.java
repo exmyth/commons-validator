@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author exmyth
  * @date 2019-07-17 12:00
- * @description
+ *
  */
 public final class DefaultMessageInterpolator implements MessageInterpolator {
     private final boolean cachingEnabled;

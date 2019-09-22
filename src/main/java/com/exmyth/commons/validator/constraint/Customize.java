@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 /**
  * @author exmyth
  * @date 2019-08-26 17:43
- * @description
+ *
  */
 @Documented
 @Target({ElementType.FIELD, ElementType.TYPE})

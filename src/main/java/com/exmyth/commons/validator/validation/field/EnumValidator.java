@@ -13,7 +13,7 @@ import java.util.Arrays;
 /**
  * @author exmyth
  * @date 2019-08-23 23:04
- * @description
+ *
  */
 public final class EnumValidator implements FieldValidator<Enum> {
     @Enum({})

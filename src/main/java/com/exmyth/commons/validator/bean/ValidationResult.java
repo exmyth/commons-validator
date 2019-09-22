@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * @author exmyth
  * @date 2019-07-31 10:53
- * @description
+ *
  */
 public final class ValidationResult<T> implements Serializable {
     private static final long serialVersionUID = -5000368965447802133L;

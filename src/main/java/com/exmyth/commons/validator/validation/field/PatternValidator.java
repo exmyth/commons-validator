@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 /**
  * @author exmyth
  * @date 2019-07-16 17:57
- * @description
+ *
  */
 public final class PatternValidator implements FieldValidator<Pattern> {
     @Pattern(regexp = "*")

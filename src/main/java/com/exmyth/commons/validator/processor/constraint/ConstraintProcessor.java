@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 /**
  * @author exmyth
  * @date 2019-08-25 17:51
- * @description
+ *
  */
 public final class ConstraintProcessor extends AbstractProcessor {
     private static final Class constraintClass = Constraint.class;

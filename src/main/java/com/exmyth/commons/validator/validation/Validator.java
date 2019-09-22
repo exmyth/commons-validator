@@ -8,7 +8,7 @@ import java.lang.annotation.Annotation;
 /**
  * @author exmyth
  * @date 2019-08-19 23:13
- * @description
+ *
  */
 public interface Validator<A extends Annotation> {
     /**

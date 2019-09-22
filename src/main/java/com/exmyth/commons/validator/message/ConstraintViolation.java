@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * @author exmyth
  * @date 2019-07-18 10:08
- * @description
+ *
  */
 public final class ConstraintViolation {
     private String message;

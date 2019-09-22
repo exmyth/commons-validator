@@ -11,7 +11,7 @@ import com.exmyth.commons.validator.validation.FieldValidator;
 /**
  * @author exmyth
  * @date 2019-07-16 06:47
- * @description
+ *
  */
 public final class NotBlankValidator implements FieldValidator<NotBlank> {
     @NotBlank

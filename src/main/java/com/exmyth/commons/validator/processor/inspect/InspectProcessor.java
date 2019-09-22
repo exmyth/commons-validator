@@ -32,7 +32,7 @@ import static com.exmyth.commons.validator.processor.ValidatorProcessor.*;
 /**
  * @author exmyth
  * @date 2019-08-20 20:02
- * @description
+ *
  */
 public final class InspectProcessor extends AbstractProcessor {
     private static final java.util.List<String> groupValidatorList = new ArrayList(2);

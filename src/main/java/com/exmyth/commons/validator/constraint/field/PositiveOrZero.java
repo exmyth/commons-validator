@@ -19,7 +19,7 @@ import java.lang.annotation.*;
  *
  * @author exmyth
  * @date 2019-07-16 20:20
- * @description
+ *
  */
 @Documented
 @Target({ElementType.FIELD, ElementType.PARAMETER})

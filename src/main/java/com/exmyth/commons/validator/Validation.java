@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author exmyth
  * @date 2019-07-30 14:38
- * @description
+ *
  */
 public interface Validation {
     default ValidationResult<List<ConstraintViolation>> validate(boolean failFast){

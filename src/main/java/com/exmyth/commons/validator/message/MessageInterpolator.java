@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @author exmyth
  * @date 2019-07-17 10:10
- * @description
+ *
  */
 public interface MessageInterpolator {
 

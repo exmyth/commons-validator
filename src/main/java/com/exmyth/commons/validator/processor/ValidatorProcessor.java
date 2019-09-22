@@ -11,7 +11,7 @@ import com.sun.tools.javac.util.Names;
 /**
  * @author exmyth
  * @date 2019-08-25 20:24
- * @description
+ *
  */
 public final class ValidatorProcessor {
 

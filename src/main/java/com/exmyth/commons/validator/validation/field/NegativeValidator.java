@@ -11,7 +11,7 @@ import com.exmyth.commons.validator.validation.FieldValidator;
 /**
  * @author exmyth
  * @date 2019-07-18 06:54
- * @description
+ *
  */
 public final class NegativeValidator implements FieldValidator<Negative> {
     @Negative

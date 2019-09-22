@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 /**
  * @author exmyth
  * @date 2019-07-18 20:52
- * @description
+ *
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

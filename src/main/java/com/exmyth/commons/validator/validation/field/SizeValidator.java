@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * @author exmyth
  * @date 2019-07-18 06:55
- * @description
+ *
  */
 public final class SizeValidator implements FieldValidator<Size> {
     @Size

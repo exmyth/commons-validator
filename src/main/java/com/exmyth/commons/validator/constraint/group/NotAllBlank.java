@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 /**
  * @author exmyth
  * @date 2019-07-21 07:33
- * @description
+ *
  */
 @Documented
 @Target({ElementType.TYPE})

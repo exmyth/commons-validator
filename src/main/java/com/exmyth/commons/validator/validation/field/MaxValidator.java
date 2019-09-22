@@ -11,7 +11,7 @@ import com.exmyth.commons.validator.validation.FieldValidator;
 /**
  * @author exmyth
  * @date 2019-07-18 06:52
- * @description
+ *
  */
 public final class MaxValidator implements FieldValidator<Max> {
     @Max(value = 0)

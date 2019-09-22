@@ -13,7 +13,7 @@ import static com.exmyth.commons.validator.util.ValidatorUtil.*;
 /**
  * @author exmyth
  * @date 2019-08-24 14:33
- * @description
+ *
  */
 public final class EvenValidator implements FieldValidator<Even> {
     @Even

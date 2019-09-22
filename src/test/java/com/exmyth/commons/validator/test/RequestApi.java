@@ -6,7 +6,7 @@ import com.exmyth.commons.validator.processor.inspect.Inspect;
 /**
  * @author exmyth
  * @date 2019-08-25 14:42
- * @description
+ *
  */
 public class RequestApi {
     @Inspect(field = "helloRequest.email", validator = NotBlank.class)
