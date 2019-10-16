@@ -1,28 +1,28 @@
 # commons-validator
 
-a validator without any dependency except jre  [中文](https://github.com/exmyth/commons-validator/blob/master/README_zh_CN.md)
+一个轻量的验证器 [English](https://github.com/exmyth/commons-validator/blob/master/README.md)
 
-In the implementation of business functions, most of them will do some parameter verification on the input parameters, and the usage is different.
-In order to let everyone pull out from the simple and trivial things of parameter verification, we can pay more attention to the business implementation, so we developed a simple parameter checker.
-This verifier does not depend on the two-party library and the three-party library. It is simple to use, has a pure taste, is colorless and tasteless, travels at home, and is a must-have medicine.
+在业务功能实现中, 大多都会对输入参数做一些参数校验, 使用方式各不相同.
+为了让大家从参数校验这种简单又琐碎的事情中抽身出来, 可以更多的关注业务实现, 因此开发了一个简单的参数校验器.
+此校验器不依赖二方库和三方库, 使用简单, 口感纯厚, 无色无味, 居家旅行, 必备良药.
 
-## Feature
+## 功能
 
-> Annotation verification (generating verification code when compile)
+> 注解校验(编译时生成校验代码)
 
-> General verification (runtime check)
-
+> 通用校验(运行时校验)
 
 ```html
-Currently support the following verification rules, if you still can not meet your needs, please issue a message, I will maintain it regularly 
+目前支持以下校验规则,如果仍无法满足你的需求,请issues留言,我会定期维护 
 
-Independent check: Email, Enum, Even, IdNumber, Length, Max, Min, Mobile, Negative, NegativeOrZero, NotBlank, NotEmpty, NotNull, Odd, Pattern, Positive, PositiveOrZero, Range, Size
+独立校验:Email, Enum, Even, IdNumber, Length, Max, Min, Mobile, Negative, NegativeOrZero, NotBlank, NotEmpty, NotNull, Odd, Pattern, Positive, PositiveOrZero, Range, Size
 
-Compose check: NotAllBlank, NotAnyBlank
+组合校验:NotAllBlank, NotAnyBlank
 ```
 
-## Dependency
-[last version](https://search.maven.org/search?q=g:com.github.exmyth%20AND%20a:commons-validator&core=gav)
+## 药引
+
+[获取最新配方](https://search.maven.org/search?q=g:com.github.exmyth%20AND%20a:commons-validator&core=gav)
 ```xml
 <dependency>
   <groupId>com.github.exmyth</groupId>
@@ -33,12 +33,12 @@ Compose check: NotAllBlank, NotAnyBlank
 implementation 'com.github.exmyth:commons-validator:0.0.1'
 ```
 
-## Usage
+## 服用
+
+使用方式
 
 
-
-1)General verification: com.exmyth.commons.validator.util.Validators Provides some general verification methods
-
+1)通用校验:com.exmyth.commons.validator.util.Validators 提供了一些通用校验方法
 
 ```java
 /**
@@ -112,7 +112,7 @@ public static void validateOrThrow(Object value, String[] fieldNames, String mes
  */
 public static List<ConstraintViolation> validate(Object instance, boolean failFast);
 ```
-2)Annotation verification:suport annotation @NotBlank @Valid and others with @Constraint
+2)注解校验:支持@Constraint 配合 @NotBlank @Valid 等校验规则注解使用
 
 ```java 
 @Constraint
@@ -131,9 +131,9 @@ class HelloBody implements Validation {
 }
 ```
 
-By @Scope on the verification rule annotation, you can see the type of the checked object to which the validation rule applies.
+通过校验规则注解上的@Scope,可以查看到校验规则适用的被校验对象的类型.
 
-Please check the properties and description of the annotation, for the specific parameter information of the verification rule
+校验规则具体参数信息请查看其注解的属性和说明
 
 ```java
 @Documented
@@ -150,7 +150,7 @@ public @interface Length {
 }
 ```
 
-## Example
+## 栗子
 
 Talk is cheap. Show me the code
 
@@ -158,7 +158,7 @@ Talk is cheap. Show me the code
 >
 > [com.exmyth.commons.validator.test.ValidatorApi](https://github.com/exmyth/commons-validator/blob/master/src/test/java/com/exmyth/commons/validator/test/ValidatorApi.java)
 >
-> _Compiled code_
+> _编译后的代码_
 
 ```java
 //
@@ -226,9 +226,9 @@ public class ValidatorApi extends RequestApi {
 }
 ```
 
-## Validation
+## 校验信息
 
-In order to standardize and unify, in addition to the newly added rules such as IdNumber, the message template of other verification rule information is consistent with the validation-api, hibernate-validator naming rules.
+为了规范统一, 除了IdNumber等新增的验规则外,其他校验规则信息的message template均和validation-api,hibernate-validator命名规则保持一致
 
 ```properties
 javax.validation.constraints.AssertFalse.message     = 只能为false
@@ -281,5 +281,5 @@ org.hibernate.validator.constraints.time.DurationMax.message        = 必须小�
 org.hibernate.validator.constraints.time.DurationMin.message        = 必须大于${inclusive == true ? '或等于' : ''}${days == 0 ? '' : days += '天'}${hours == 0 ? '' : hours += '小时'}${minutes == 0 ? '' : minutes += '分钟'}${seconds == 0 ? '' : seconds += '秒'}${millis == 0 ? '' : millis += '毫秒'}${nanos == 0 ? '' : nanos += '纳秒'}
 ```
 
-## Attention
+## 注意事项
 _
