@@ -231,54 +231,69 @@ public class ValidatorApi extends RequestApi {
 In order to standardize and unify, in addition to the newly added rules such as IdNumber, the message template of other verification rule information is consistent with the validation-api, hibernate-validator naming rules.
 
 ```properties
-javax.validation.constraints.AssertFalse.message     = 只能为false
-javax.validation.constraints.AssertTrue.message      = 只能为true
-javax.validation.constraints.DecimalMax.message      = 必须小于或等于{value}
-javax.validation.constraints.DecimalMin.message      = 必须大于或等于{value}
-javax.validation.constraints.Digits.message          = 数字的值超出了允许范围(只允许在{integer}位整数和{fraction}位小数范围内)
-javax.validation.constraints.Email.message           = 不是一个合法的电子邮件地址
-javax.validation.constraints.Future.message          = 需要是一个将来的时间
-javax.validation.constraints.FutureOrPresent.message = 需要是一个将来或现在的时间
-javax.validation.constraints.IdNumber.message        = 不是一个合法的身份证号
-javax.validation.constraints.Max.message             = 最大不能超过{value}
-javax.validation.constraints.Min.message             = 最小不能小于{value}
-javax.validation.constraints.Mobile.message          = 不是一个合法的手机号
-javax.validation.constraints.Negative.message        = 必须是负数
-javax.validation.constraints.NegativeOrZero.message  = 必须是负数或零
-javax.validation.constraints.NotAllBlank.message     = 不能全部为空
-javax.validation.constraints.NotAnyBlank.message     = 任何一个不能为空
-javax.validation.constraints.NotBlank.message        = 不能为空
-javax.validation.constraints.NotEmpty.message        = 不能为空
-javax.validation.constraints.NotNull.message         = 不能为null
-javax.validation.constraints.Null.message            = 必须为null
-javax.validation.constraints.Past.message            = 需要是一个过去的时间
-javax.validation.constraints.PastOrPresent.message   = 需要是一个过去或现在的时间
-javax.validation.constraints.Pattern.message         = 需要匹配正则表达式"{regexp}"
-javax.validation.constraints.Positive.message        = 必须是正数
-javax.validation.constraints.PositiveOrZero.message  = 必须是正数或零
-javax.validation.constraints.Size.message            = 个数必须在{min}和{max}之间
+javax.validation.constraints.AssertFalse.message     = must be false
+javax.validation.constraints.AssertTrue.message      = must be true
+javax.validation.constraints.DecimalMax.message      = must be less than ${inclusive == true ? 'or equal to ' : ''}{value}
+javax.validation.constraints.DecimalMin.message      = must be greater than ${inclusive == true ? 'or equal to ' : ''}{value}
+javax.validation.constraints.Digits.message          = numeric value out of bounds (<{integer} digits>.<{fraction} digits> expected)
+javax.validation.constraints.Email.message           = must be a well-formed email address
+javax.validation.constraints.Enum.message            = must be one of {value}
+javax.validation.constraints.Future.message          = must be a future date
+javax.validation.constraints.FutureOrPresent.message = must be a date in the present or in the future
+javax.validation.constraints.IdNumber.message        = must be a well-formed identity number
+javax.validation.constraints.Inspect.message         = must be a well-formed value
+javax.validation.constraints.Max.message             = must be less than or equal to {value}
+javax.validation.constraints.Min.message             = must be greater than or equal to {value}
+javax.validation.constraints.Mobile.message          = must be a well-formed mobile number
+javax.validation.constraints.Negative.message        = must be less than 0
+javax.validation.constraints.NegativeOrZero.message  = must be less than or equal to 0
+javax.validation.constraints.NotAllBlank.message     = must not be all blank
+javax.validation.constraints.NotAnyBlank.message     = must not be any blank
+javax.validation.constraints.NotBlank.message        = must not be blank
+javax.validation.constraints.NotEmpty.message        = must not be empty
+javax.validation.constraints.NotNull.message         = must not be null
+javax.validation.constraints.Null.message            = must be null
+javax.validation.constraints.Past.message            = must be a past date
+javax.validation.constraints.PastOrPresent.message   = must be a date in the past or in the present
+javax.validation.constraints.Pattern.message         = must match "{regexp}"
+javax.validation.constraints.Positive.message        = must be greater than 0
+javax.validation.constraints.PositiveOrZero.message  = must be greater than or equal to 0
+javax.validation.constraints.Even.message            = must be even
+javax.validation.constraints.Odd.message             = must be odd
+javax.validation.constraints.Size.message            = size must be between {min} and {max}
 
-org.hibernate.validator.constraints.CreditCardNumber.message        = 不合法的信用卡号码
-org.hibernate.validator.constraints.Currency.message                = 不合法的货币 (必须是{value}其中之一)
-org.hibernate.validator.constraints.EAN.message                     = 不合法的{type}条形码
-org.hibernate.validator.constraints.Email.message                   = 不是一个合法的电子邮件地址
-org.hibernate.validator.constraints.ISBN.message                    = 不是一个合法的国际标准书号
-org.hibernate.validator.constraints.Length.message                  = 长度需要在{min}和{max}之间
-org.hibernate.validator.constraints.CodePointLength.message         = 长度需要在{min}和{max}之间
-org.hibernate.validator.constraints.LuhnCheck.message               = ${validatedValue}的校验码不合法, Luhn模10校验和不匹配
-org.hibernate.validator.constraints.Mod10Check.message              = ${validatedValue}的校验码不合法, 模10校验和不匹配
-org.hibernate.validator.constraints.Mod11Check.message              = ${validatedValue}的校验码不合法, 模11校验和不匹配
-org.hibernate.validator.constraints.ModCheck.message                = ${validatedValue}的校验码不合法, ${modType}校验和不匹配
-org.hibernate.validator.constraints.NotBlank.message                = 不能为空
-org.hibernate.validator.constraints.NotEmpty.message                = 不能为空
-org.hibernate.validator.constraints.ParametersScriptAssert.message  = 执行脚本表达式"{script}"没有返回期望结果
-org.hibernate.validator.constraints.Range.message                   = 需要在{min}和{max}之间
-org.hibernate.validator.constraints.SafeHtml.message                = 可能有不安全的HTML内容
-org.hibernate.validator.constraints.ScriptAssert.message            = 执行脚本表达式"{script}"没有返回期望结果
-org.hibernate.validator.constraints.URL.message                     = 需要是一个合法的URL
 
-org.hibernate.validator.constraints.time.DurationMax.message        = 必须小于${inclusive == true ? '或等于' : ''}${days == 0 ? '' : days += '天'}${hours == 0 ? '' : hours += '小时'}${minutes == 0 ? '' : minutes += '分钟'}${seconds == 0 ? '' : seconds += '秒'}${millis == 0 ? '' : millis += '毫秒'}${nanos == 0 ? '' : nanos += '纳秒'}
-org.hibernate.validator.constraints.time.DurationMin.message        = 必须大于${inclusive == true ? '或等于' : ''}${days == 0 ? '' : days += '天'}${hours == 0 ? '' : hours += '小时'}${minutes == 0 ? '' : minutes += '分钟'}${seconds == 0 ? '' : seconds += '秒'}${millis == 0 ? '' : millis += '毫秒'}${nanos == 0 ? '' : nanos += '纳秒'}
+org.hibernate.validator.constraints.CreditCardNumber.message        = invalid credit card number
+org.hibernate.validator.constraints.Currency.message                = invalid currency (must be one of {value})
+org.hibernate.validator.constraints.EAN.message                     = invalid {type} barcode
+org.hibernate.validator.constraints.Email.message                   = not a well-formed email address
+org.hibernate.validator.constraints.ISBN.message                    = invalid ISBN
+org.hibernate.validator.constraints.Length.message                  = length must be between {min} and {max}
+org.hibernate.validator.constraints.CodePointLength.message         = length must be between {min} and {max}
+org.hibernate.validator.constraints.LuhnCheck.message               = The check digit for ${validatedValue} is invalid, Luhn Modulo 10 checksum failed
+org.hibernate.validator.constraints.Mod10Check.message              = The check digit for ${validatedValue} is invalid, Modulo 10 checksum failed
+org.hibernate.validator.constraints.Mod11Check.message              = The check digit for ${validatedValue} is invalid, Modulo 11 checksum failed
+org.hibernate.validator.constraints.ModCheck.message                = The check digit for ${validatedValue} is invalid, ${modType} checksum failed
+org.hibernate.validator.constraints.NotBlank.message                = may not be empty
+org.hibernate.validator.constraints.NotEmpty.message                = may not be empty
+org.hibernate.validator.constraints.ParametersScriptAssert.message  = script expression "{script}" didn't evaluate to true
+org.hibernate.validator.constraints.Range.message                   = must be between {min} and {max} step {step}
+org.hibernate.validator.constraints.SafeHtml.message                = may have unsafe html content
+org.hibernate.validator.constraints.ScriptAssert.message            = script expression "{script}" didn't evaluate to true
+org.hibernate.validator.constraints.UniqueElements.message          = must only contain unique elements
+org.hibernate.validator.constraints.URL.message                     = must be a valid URL
+
+org.hibernate.validator.constraints.br.CNPJ.message                 = invalid Brazilian corporate taxpayer registry number (CNPJ)
+org.hibernate.validator.constraints.br.CPF.message                  = invalid Brazilian individual taxpayer registry number (CPF)
+org.hibernate.validator.constraints.br.TituloEleitoral.message      = invalid Brazilian Voter ID card number
+
+org.hibernate.validator.constraints.pl.REGON.message                = Invalid Polish Taxpayer Identification Number (REGON)
+org.hibernate.validator.constraints.pl.NIP.message                  = Invalid VAT Identification Number (NIP)
+org.hibernate.validator.constraints.pl.PESEL.message                = Invalid Polish National Identification Number (PESEL)
+
+org.hibernate.validator.constraints.time.DurationMax.message        = must be shorter than${inclusive == true ? ' or equal to' : ''}${days == 0 ? '' : days == 1 ? ' 1 day' : ' ' += days += ' days'}${hours == 0 ? '' : hours == 1 ? ' 1 hour' : ' ' += hours += ' hours'}${minutes == 0 ? '' : minutes == 1 ? ' 1 minute' : ' ' += minutes += ' minutes'}${seconds == 0 ? '' : seconds == 1 ? ' 1 second' : ' ' += seconds += ' seconds'}${millis == 0 ? '' : millis == 1 ? ' 1 milli' : ' ' += millis += ' millis'}${nanos == 0 ? '' : nanos == 1 ? ' 1 nano' : ' ' += nanos += ' nanos'}
+org.hibernate.validator.constraints.time.DurationMin.message        = must be longer than${inclusive == true ? ' or equal to' : ''}${days == 0 ? '' : days == 1 ? ' 1 day' : ' ' += days += ' days'}${hours == 0 ? '' : hours == 1 ? ' 1 hour' : ' ' += hours += ' hours'}${minutes == 0 ? '' : minutes == 1 ? ' 1 minute' : ' ' += minutes += ' minutes'}${seconds == 0 ? '' : seconds == 1 ? ' 1 second' : ' ' += seconds += ' seconds'}${millis == 0 ? '' : millis == 1 ? ' 1 milli' : ' ' += millis += ' millis'}${nanos == 0 ? '' : nanos == 1 ? ' 1 nano' : ' ' += nanos += ' nanos'}
+
 ```
 
 ## Attention
