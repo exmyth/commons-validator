@@ -504,10 +504,10 @@ public final class ValidatorUtil {
             return false;
         }
         for (int i = 0; i < clazz.length; i++) {
-            if(!clazz[i].isInstance(value)){
-                return false;
+            if(clazz[i].isInstance(value)){
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }
